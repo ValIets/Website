@@ -137,34 +137,6 @@ div.header > div.menu:hover > svg > path:not([fill=none]) {
 	fill: rgb(0, 0, 0);
 }
 
-@media only screen and (max-width: 1079px) {
-	div.header > ul.navigation {
-		display: none;
-	}
-	
-	div.header > div.menu {
-		display: block;
-	}
-	
-	div.header > ul.navigation > li {
-		float: none;
-	}
-}
-
-@media only screen and (min-width: 1080px) {
-	div.header > ul.navigation {
-		display: block;
-	}
-	
-	div.header > div.menu {
-		display: none;
-	}
-	
-	div.header > ul.navigation > li {
-		float: left;
-	}
-}
-
 
 
 div.content {
@@ -272,7 +244,7 @@ div.content > div#team > div.nav > span {
 	cursor: pointer;
 }
 
-div.content > div#team > div.nav > span.selected, div.content > div#team > div.nav > span:hover {
+div.content > div#team:not([class=mobile]) > div.nav > span.selected, div.content > div#team:not([class=mobile]) > div.nav > span:hover {
 	color: rgb(0, 0, 0);
 	
 	background-color: rgb(255, 255, 255);
@@ -280,9 +252,18 @@ div.content > div#team > div.nav > span.selected, div.content > div#team > div.n
 
 div.content > div#team > div.teams {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	
-	height: 96px;
+	height: calc(3em + 4*16px);
+}
+
+div.content > div#team.mobile > div.teams {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	
+	height: calc(12em + 12*16px);
 }
 
 div.content > div#team > div.teams > table {
@@ -305,6 +286,14 @@ div.content > div#team > div.teams > table > tbody > tr {
 	width: 100%;
 	
 	padding: 0 40%;
+}
+
+div.content > div#team > div.teams > table > tbody > tr > th {
+	display: none;
+}
+
+div.content > div#team.mobile > div.teams > table > tbody > tr {
+	padding: 0 5%;
 }
 
 div.content > div#team > div.teams > table:not([id=design]) {
@@ -334,15 +323,9 @@ div.content > div#files > span {
 
 div.content > div#files > div.items {
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
 	justify-content: space-evenly;
-	
-	width: 100%;
-}
-
-div.content > div#files > div.items > div.itemsrow {
-	display: flex;
-	justify-content: space-evenly;
+	align-items: center;
 	
 	width: 100%;
 	
@@ -385,4 +368,54 @@ div.footer {
 	color: rgb(255, 255, 255);
 	
 	background-color: rgb(0, 0, 0);
+}
+
+
+
+@media only screen and (max-width: 1079px) {
+	div.header > ul.navigation {
+		display: none;
+	}
+	
+	div.header > div.menu {
+		display: block;
+	}
+	
+	div.header > ul.navigation > li {
+		float: none;
+	}
+	
+	div.content > div#home {
+		flex-direction: column;
+		
+		padding: 5%;
+	}
+	
+	div.content > div#home > div {
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 1080px) {
+	div.header > ul.navigation {
+		display: block;
+	}
+	
+	div.header > div.menu {
+		display: none;
+	}
+	
+	div.header > ul.navigation > li {
+		float: left;
+	}
+	
+	div.content > div#home {
+		flex-direction: row;
+		
+		padding: 5% 0;
+	}
+	
+	div.content > div#home > div {
+		width: 30%;
+	}
 }

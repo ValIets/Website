@@ -20,12 +20,21 @@
 					$("ul.navigation").show();
 					
 					$("ul.navigation").removeClass("mobile");
-					$("div.content > div > div > div").removeClass("mobile");
+					$("div.content > div#team").removeClass("mobile");
+					
+					$("div.content > div#team > div.nav").show();
+					$("div.content > div#team > div.teams > table").hide();
+					$("div.content > div#team > div.teams > table#" + $("div.content > div#team > div.nav > span.selected").attr("id")).show("fade");
+					$("div.content > div#team > div.teams > table > tbody > tr > th").hide();
 				} else {
 					$("ul.navigation").hide();
 					
 					$("ul.navigation").addClass("mobile");
-					$("div.content > div > div > div").addClass("mobile");
+					$("div.content > div#team").addClass("mobile");
+					
+					$("div.content > div#team > div.nav").hide();
+					$("div.content > div#team > div.teams > table").show();
+					$("div.content > div#team > div.teams > table > tbody > tr > th").show();
 				}
 			}
 			
@@ -121,23 +130,26 @@
 				
 				<div class="nav">
 					<span id="design" class="selected">Designteam</span>
-					<span id="software">Softwareteam</span>
 					<span id="hardware">Hardwareteam</span>
+					<span id="software">Softwareteam</span>
 				</div>
 				
 				<div class="teams">
 					<table id="design">
+						<tr><th colspan=2>Designteam</th></tr>
 						<tr><td>Kirty Bol</td><td>0921444</td></tr>
 						<tr><td>Harold Struik</td><td>0931946</td></tr>
 					</table>
 					
-					<table id="software">
+					<table id="hardware">
+						<tr><th colspan=2>Hardwareteam</th></tr>
 						<tr><td>Sarah Aggoun</td><td>0890338</td></tr>
 						<tr><td>Noëlle Clement</td><td>0935050</td></tr>
 						<tr><td>Tommie Terhoeve</td><td>0926280</td></tr>
 					</table>
 					
-					<table id="hardware">
+					<table id="software">
+						<tr><th colspan=2>Softwareteam</th></tr>
 						<tr><td>Joris Kortekaas</td><td>0935462</td></tr>
 						<tr><td>Pedram Tabesh</td><td>0934809</td></tr>
 						<tr><td>Sander Wolswijk</td><td>0926815</td></tr>
@@ -149,11 +161,9 @@
 				<span>Documenten</span>
 				
 				<div class="items">
-					<div class="itemsrow">
-						<div class="item" href="static/files/onderzoeksopzet.pdf">
-							<img class="svg" src="static/images/files.svg" />
-							<span>Onderzoeksopzet</span>
-						</div>
+					<div class="item" href="static/files/onderzoeksopzet.pdf">
+						<img class="svg" src="static/images/files.svg" />
+						<span>Onderzoeksopzet</span>
 					</div>
 				</div>
 			</div>
