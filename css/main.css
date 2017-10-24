@@ -335,7 +335,7 @@ div.content > div#files > span {
 div.content > div#files > div.items {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-even;
+	justify-content: space-evenly;
 	
 	width: 100%;
 }
