@@ -1,1 +1,166 @@
-Hallo
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Valiets</title>
+		
+		<meta charset="utf-8" /> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<link rel="stylesheet" href="/css/main.css"></link>
+		<link rel="stylesheet" href="/css/font.css"></link>
+		
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery-ui.min.js"></script>
+		<script src="/js/inliner.js"></script>
+	</head>
+	<body>
+		<script>
+			function checkSize() {
+				if ($(window).width() >= 1080) {
+					$("ul.navigation").show();
+					
+					$("ul.navigation").removeClass("mobile");
+					$("div.content > div > div > div").removeClass("mobile");
+				} else {
+					$("ul.navigation").hide();
+					
+					$("ul.navigation").addClass("mobile");
+					$("div.content > div > div > div").addClass("mobile");
+				}
+			}
+			
+			$(document).ready(function() {
+				inline();
+				checkSize();
+				
+				$(window).on("resize", function() {
+					checkSize();
+				});
+				
+				$("div.menu").on("click", function() {
+					if (!$("ul.navigation").is(":visible")) {
+						$("ul.navigation").show("slide", { "direction": "right" });
+					} else {
+						$("ul.navigation").hide("slide", { "direction": "right" });
+					}
+				});
+				
+				$("ul.navigation > li").on("click", function() {
+					$("html, body").animate({
+						scrollTop: $("div#" + $(this).attr("id")).offset().top - 45
+					});
+				});
+				
+				$(":not(div[class=\"menu\"])").on("click", function(e) {
+					if ($("ul.navigation").is(":visible:not(:animated)") && $("ul.navigation.mobile").length > 0) {
+						$("ul.navigation").hide("slide", { "direction": "right" });
+					}
+				});
+				
+				$("div.nav > span").on("click", function() {
+					if ($(this).attr("id") != $("table:visible").attr("id")) {
+						$("span.selected").removeClass("selected");
+						$(this).addClass("selected");
+						
+						target = $(this)
+						
+						$("table:visible").hide("fade", function() {
+							$("table#" + target.attr("id")).show("fade");
+						});
+					}
+				});
+				
+				$("div.item").on("click", function() {
+					location.href = $(this).attr("href");
+				});
+			});
+		</script>
+		
+		<div class="header">
+			<span class="title">Valiets</span>
+			
+			<ul class="navigation">
+				<li id="home"><img class="svg" src="/static/images/home.svg" />Start</li>
+				<li id="team"><img class="svg" src="/static/images/team.svg" />Team</li>
+				<li id="files"><img class="svg" src="/static/images/files.svg" />Documenten</li>
+				<li id="files"><img class="svg" src="/static/images/files.svg" />Placeholder</li>
+				<li id="files"><img class="svg" src="/static/images/files.svg" />Placeholder</li>
+			</ul>
+			
+			<div class="menu">
+				<img class="svg" src="/static/images/menu.svg" />
+			</div>
+		</div>
+		
+		<div class="content">
+			<div id="start">
+				<span>Valiets</span>
+				<span>...</span>
+			</div>
+			
+			<div id="home">
+				<div>
+					<span>Wat is Valiets</span>
+					<p>...</p>
+				</div>
+				
+				<div>
+					<span>Hoe werkt Valiets</span>
+					<p>...</p>
+				</div>
+				
+				<div>
+					<span>Nog wat Valiets</span>
+					<p>...</p>
+				</div>
+			</div>
+			
+			
+			<div id="team">
+				<span>Het team</span>
+				
+				<div class="nav">
+					<span id="design" class="selected">Designteam</span>
+					<span id="software">Softwareteam</span>
+					<span id="hardware">Hardwareteam</span>
+				</div>
+				
+				<div class="teams">
+					<table id="design">
+						<tr><td>Kirty Bol</td><td>0921444</td></tr>
+						<tr><td>Harold Struik</td><td>0931946</td></tr>
+					</table>
+					
+					<table id="software">
+						<tr><td>Sarah Aggoun</td><td>0890338</td></tr>
+						<tr><td>Noëlle Clement</td><td>0935050</td></tr>
+						<tr><td>Tommie Terhoeve</td><td>0926280</td></tr>
+					</table>
+					
+					<table id="hardware">
+						<tr><td>Joris Kortekaas</td><td>0935462</td></tr>
+						<tr><td>Pedram Tabesh</td><td>0934809</td></tr>
+						<tr><td>Sander Wolswijk</td><td>0926815</td></tr>
+					</table>
+				</div>
+			</div>
+			
+			<div id="files">
+				<span>Documenten</span>
+				
+				<div class="items">
+					<div class="itemsrow">
+						<div class="item" href="/static/files/onderzoeksopzet.pdf">
+							<img class="svg" src="/static/images/files.svg" />
+							<span>Onderzoeksopzet</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer">
+			<span>© 2017 Valiets</span>
+		</div>
+	</body>
+</html>
