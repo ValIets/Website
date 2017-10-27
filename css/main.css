@@ -301,13 +301,19 @@ div.content > div#team > div.teams > table:not([id=design]) {
 }
 
 
-div.content > div#files {
+div.content > div.files {
 	width: 100%;
 	
 	background-color: rgb(0, 0, 0);
+	
+	padding: 8px 0;
 }
 
-div.content > div#files > span {
+div.content > div.files.alt {
+	background-color: rgb(255, 255, 255);
+}
+
+div.content > div.files > span {
 	display: flex;
 	justify-content: center;
 	
@@ -321,7 +327,11 @@ div.content > div#files > span {
 	font-weight: 600;
 }
 
-div.content > div#files > div.items {
+div.content > div.files.alt > span {
+	color: rgb(0, 0, 0);
+}
+
+div.content > div.files > div.items {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
@@ -348,13 +358,25 @@ div.item {
 	cursor: pointer;
 }
 
+div.item.alt {
+	background-color: rgb(0, 0, 0);
+}
+
 div.item > svg {
 	width: 64px;
 	height: 64px;
 }
 
+div.item.alt > svg {
+	fill: rgb(255, 255, 255);
+}
+
 div.item > span {
 	font-size: 1.5em;
+}
+
+div.item.alt > span {
+	color: rgb(255, 255, 255);
 }
 
 
